@@ -10,6 +10,9 @@ import UIKit
 
 class MainViewController: UITableViewController {
 
+    var timeTable = [[Lesson]]()
+    let currentDayIndex = 3
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,46 +36,39 @@ class MainViewController: UITableViewController {
         
         let urlString = "https://sheets.googleapis.com/v4/spreadsheets/\(spreadsheetId)?ranges=\(sheetId)!\(range)&fields=\(fields)&key=\(apiKey)"
         
-
-        
-        /*for day in timeTable {
-            for lesson in day {
-                print ("\(lesson.lessonStartTime!) \(lesson.lessonTitle ?? "--") \(lesson.teacherName ?? "--") \(lesson.lectureRoom ?? "--") \(lesson.learningCampus ?? "--")")
-            }
-            print ("-----------------------------")
-        }*/
+        getTimetable(urlString: urlString, rangeIndexes: (startColumnIndex: startColumnIndex, startRowIndex: startRowIndex, endColumnIndex: endColumnIndex, endRowIndex: endRowIndex)) {(kek) in
+            self.timeTable = kek
+            self.tableView.reloadData()
+        }
         
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        
+        return timeTable.isEmpty ? 0:timeTable[currentDayIndex].count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! LessonCell
 
-        // Configure the cell...
+        if !timeTable.isEmpty {
+        cell.startTimeLabel.text = timeTable[currentDayIndex][indexPath.row].lessonStartTime
+        cell.placeLabel.text = String(timeTable[currentDayIndex][indexPath.row].learningCampus ?? "") + "\n" + String(timeTable[currentDayIndex][indexPath.row].lectureRoom ?? "")
+            cell.teacherName.text = timeTable[currentDayIndex][indexPath.row].teacherName
+            cell.title.text = timeTable[currentDayIndex][indexPath.row].lessonTitle
+        }
 
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        100
     }
-    */
+        
 
     /*
     // Override to support editing the table view.

@@ -14,8 +14,8 @@ func getTimetable(urlString: String, rangeIndexes: (startColumnIndex: Int, start
     
     URLSession.shared.dataTask(with: url) { (data, response, error) in
         
-        guard let data = data else {return}
-        guard error == nil else {return}
+        guard let data = data else { return }
+        guard error == nil else { return }
     
         do {
             let sheet = try JSONDecoder().decode(Sheets.self, from: data)
