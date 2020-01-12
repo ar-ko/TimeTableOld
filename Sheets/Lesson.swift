@@ -14,6 +14,7 @@ struct Lesson {
     let lessonTitle: String?
     let teacherName: String?
     let lessonType: LessonType?
+    let lessonMainType: LessonMainType?
     let learningCampus: String?
     let learningCampusIsIncorrect: Bool?
     let lectureRoom: String?
@@ -21,6 +22,8 @@ struct Lesson {
     let note: String?
 }
 
-enum Subgroup {case first, second, general}
+enum Subgroup: String {case first = "first", second = "second", general = "general"}
 
 enum LessonType {case standart, canceled, online}
+
+enum LessonMainType {case lecture, practice, laboratoryWork}

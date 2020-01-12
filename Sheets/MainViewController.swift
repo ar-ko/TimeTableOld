@@ -39,7 +39,12 @@ class MainViewController: UITableViewController {
         getTimetable(urlString: urlString, rangeIndexes: (startColumnIndex: startColumnIndex, startRowIndex: startRowIndex, endColumnIndex: endColumnIndex, endRowIndex: endRowIndex)) {(kek) in
             self.timeTable = kek
             self.tableView.reloadData()
+            self.tableView.estimatedRowHeight = 50
+            self.tableView.rowHeight = UITableView.automaticDimension
         }
+        
+        tableView.estimatedRowHeight = 50
+        tableView.rowHeight = UITableView.automaticDimension
         
     }
 
@@ -60,14 +65,22 @@ class MainViewController: UITableViewController {
         cell.placeLabel.text = String(timeTable[currentDayIndex][indexPath.row].learningCampus ?? "") + "\n" + String(timeTable[currentDayIndex][indexPath.row].lectureRoom ?? "")
             cell.teacherName.text = timeTable[currentDayIndex][indexPath.row].teacherName
             cell.title.text = timeTable[currentDayIndex][indexPath.row].lessonTitle
+            
+            switch timeTable[currentDayIndex][indexPath.row].lessonMainType {
+            case .laboratoryWork: cell.lessonType.text = "Лабораторная работа"
+            case .lecture: cell.lessonType.text = "Лекция"
+            case .practice: cell.lessonType.text = "Практическое занятие"
+            default: cell.lessonType.text = ""
+            }
+            
         }
 
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        100
-    }
+    /*override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        50
+    }*/
         
 
     /*

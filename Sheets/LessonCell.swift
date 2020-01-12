@@ -10,6 +10,7 @@ import UIKit
 
 class LessonCell: UITableViewCell {
 
+    @IBOutlet weak var lessonType: UILabel!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var teacherName: UILabel!
     @IBOutlet weak var startTimeLabel: UILabel!

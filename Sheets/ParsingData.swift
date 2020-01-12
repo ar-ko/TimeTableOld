@@ -76,6 +76,7 @@ func parsingSheets(sheets: Sheets, numberOfLessons: [Int], rangeIndexes: (startC
             var whiteWeekSubgroup: Subgroup?
             var whiteWeekTeacherName: String?
             var whiteWeekLessonType: LessonType?
+            var whiteWeekLessonMainType: LessonMainType?
             var whiteWeekLearningCampus: String?
             var whiteWeekLearningCampusIsIncorrect: Bool?
             var whiteWeekLectureRoom: String?
@@ -86,6 +87,7 @@ func parsingSheets(sheets: Sheets, numberOfLessons: [Int], rangeIndexes: (startC
             var blueWeekSubgroup: Subgroup?
             var blueWeekTeacherName: String?
             var blueWeekLessonType: LessonType?
+            var blueWeekLessonMainType: LessonMainType?
             var blueWeekLearningCampus: String?
             var blueWeekLearningCampusIsIncorrect: Bool?
             var blueWeekLectureRoom: String?
@@ -198,8 +200,13 @@ func parsingSheets(sheets: Sheets, numberOfLessons: [Int], rangeIndexes: (startC
                     }
                 }
                 if ((rowIndex - correctionIndex) % 4 == 3) || (rowIndex == data.rowData.count - 1) {
-                    let whiteWeekLesson = Lesson(lessonStartTime: lessonStartTime, subgroup: whiteWeekSubgroup, lessonTitle: whiteWeekLessonTitle, teacherName: whiteWeekTeacherName, lessonType: whiteWeekLessonType, learningCampus: whiteWeekLearningCampus, learningCampusIsIncorrect: whiteWeekLearningCampusIsIncorrect, lectureRoom: whiteWeekLectureRoom, lectureRoomIsIncorrect: whiteWeekLectureRoomIsIncorrect, note: whiteWeekNote)
-                    let blueWeekLesson = Lesson(lessonStartTime: lessonStartTime, subgroup: blueWeekSubgroup, lessonTitle: blueWeekLessonTitle, teacherName: blueWeekTeacherName, lessonType: blueWeekLessonType, learningCampus: blueWeekLearningCampus, learningCampusIsIncorrect: blueWeekLearningCampusIsIncorrect, lectureRoom: blueWeekLectureRoom, lectureRoomIsIncorrect: blueWeekLectureRoomIsIncorrect, note: blueWeekNote)
+                    
+                    if whiteWeekLessonTitle != nil {
+                    whiteWeekLessonMainType = getLessonMainType(lessonTitle: whiteWeekLessonTitle!)
+                    }
+                    
+                    let whiteWeekLesson = Lesson(lessonStartTime: lessonStartTime, subgroup: whiteWeekSubgroup, lessonTitle: whiteWeekLessonTitle, teacherName: whiteWeekTeacherName, lessonType: whiteWeekLessonType, lessonMainType: whiteWeekLessonMainType, learningCampus: whiteWeekLearningCampus, learningCampusIsIncorrect: whiteWeekLearningCampusIsIncorrect, lectureRoom: whiteWeekLectureRoom, lectureRoomIsIncorrect: whiteWeekLectureRoomIsIncorrect, note: whiteWeekNote)
+                    let blueWeekLesson = Lesson(lessonStartTime: lessonStartTime, subgroup: blueWeekSubgroup, lessonTitle: blueWeekLessonTitle, teacherName: blueWeekTeacherName, lessonType: blueWeekLessonType, lessonMainType: nil, learningCampus: blueWeekLearningCampus, learningCampusIsIncorrect: blueWeekLearningCampusIsIncorrect, lectureRoom: blueWeekLectureRoom, lectureRoomIsIncorrect: blueWeekLectureRoomIsIncorrect, note: blueWeekNote)
                     
                     whiteWeakDay.append(whiteWeekLesson)
                     blueWeakDay.append(blueWeekLesson)
@@ -210,6 +217,7 @@ func parsingSheets(sheets: Sheets, numberOfLessons: [Int], rangeIndexes: (startC
                     whiteWeekSubgroup = nil
                     whiteWeekTeacherName = nil
                     whiteWeekLessonType = nil
+                    whiteWeekLessonMainType = nil
                     whiteWeekLearningCampus = nil
                     whiteWeekLearningCampusIsIncorrect = nil
                     whiteWeekLectureRoom = nil
@@ -220,6 +228,7 @@ func parsingSheets(sheets: Sheets, numberOfLessons: [Int], rangeIndexes: (startC
                     blueWeekSubgroup = nil
                     blueWeekTeacherName = nil
                     blueWeekLessonType = nil
+                    blueWeekLessonMainType = nil
                     blueWeekLearningCampus = nil
                     blueWeekLearningCampusIsIncorrect = nil
                     blueWeekLectureRoom = nil
@@ -256,6 +265,22 @@ func getLessonType(effectiveFormat: EffectiveFormat) -> LessonType {
         return .canceled
     default: return .standart
     }
+}
+
+
+func getLessonMainType(lessonTitle: String) -> LessonMainType? {
+    if lessonTitle.contains("ЛБ") {
+        return .laboratoryWork
+    }
+    
+    if lessonTitle.contains("ЛК") {
+        return .lecture
+    }
+    
+    if lessonTitle.contains("ПР") {
+        return .practice
+    }
+    return .none
 }
 
 
