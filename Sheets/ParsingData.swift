@@ -205,6 +205,7 @@ func parsingSheets(sheets: Sheets, numberOfLessons: [Int], rangeIndexes: (startC
                     whiteWeekLessonMainType = getLessonMainType(lessonTitle: whiteWeekLessonTitle!)
                     }
                     
+                    
                     let whiteWeekLesson = Lesson(lessonStartTime: lessonStartTime, subgroup: whiteWeekSubgroup, lessonTitle: whiteWeekLessonTitle, teacherName: whiteWeekTeacherName, lessonType: whiteWeekLessonType, lessonMainType: whiteWeekLessonMainType, learningCampus: whiteWeekLearningCampus, learningCampusIsIncorrect: whiteWeekLearningCampusIsIncorrect, lectureRoom: whiteWeekLectureRoom, lectureRoomIsIncorrect: whiteWeekLectureRoomIsIncorrect, note: whiteWeekNote)
                     let blueWeekLesson = Lesson(lessonStartTime: lessonStartTime, subgroup: blueWeekSubgroup, lessonTitle: blueWeekLessonTitle, teacherName: blueWeekTeacherName, lessonType: blueWeekLessonType, lessonMainType: nil, learningCampus: blueWeekLearningCampus, learningCampusIsIncorrect: blueWeekLearningCampusIsIncorrect, lectureRoom: blueWeekLectureRoom, lectureRoomIsIncorrect: blueWeekLectureRoomIsIncorrect, note: blueWeekNote)
                     
@@ -245,6 +246,22 @@ func parsingSheets(sheets: Sheets, numberOfLessons: [Int], rangeIndexes: (startC
 }
 
 
+func TitleFormatting (lessonTitle: String, lessonType: String) -> String {
+    var index = 0
+    var lessonTypeIndex = lessonType.index(lessonType.startIndex, offsetBy: index)
+    var startIndex:Int
+    for char in lessonTitle {
+        if char ==  lessonType[lessonTypeIndex] {
+            
+            
+            index = 0
+            lessonTypeIndex = lessonType.index(lessonType.startIndex, offsetBy: index)
+        }
+    }
+    return ""
+}
+
+
 func locationIsBroken (effectiveFormat: EffectiveFormat) -> Bool {
     if effectiveFormat.backgroundColor.red == 1 &&
         effectiveFormat.backgroundColor.green == nil &&
@@ -269,15 +286,15 @@ func getLessonType(effectiveFormat: EffectiveFormat) -> LessonType {
 
 
 func getLessonMainType(lessonTitle: String) -> LessonMainType? {
-    if lessonTitle.contains("ЛБ") {
+    if lessonTitle.contains("(ЛБ)") {
         return .laboratoryWork
     }
     
-    if lessonTitle.contains("ЛК") {
+    if lessonTitle.contains("(ЛК)") {
         return .lecture
     }
     
-    if lessonTitle.contains("ПР") {
+    if lessonTitle.contains("(ПР)") {
         return .practice
     }
     return .none
