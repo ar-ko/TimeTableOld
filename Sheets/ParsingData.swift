@@ -246,19 +246,35 @@ func parsingSheets(sheets: Sheets, numberOfLessons: [Int], rangeIndexes: (startC
 }
 
 
-func TitleFormatting (lessonTitle: String, lessonType: String) -> String {
-    var index = 0
-    var lessonTypeIndex = lessonType.index(lessonType.startIndex, offsetBy: index)
-    var startIndex:Int
-    for char in lessonTitle {
+func titleFormatting (lessonTitle: String, lessonType: String) -> String {
+    var indexs = 0
+    var lessonTypeIndex = lessonType.index(lessonType.startIndex, offsetBy: indexs)
+    var startIndex = 0
+    for (index, char) in lessonTitle.enumerated() {
+        print (index)
         if char ==  lessonType[lessonTypeIndex] {
-            
-            
-            index = 0
-            lessonTypeIndex = lessonType.index(lessonType.startIndex, offsetBy: index)
+            if lessonTypeIndex == lessonType.startIndex {
+                startIndex = index
+                print ("FIRST")
+            }
+            else {
+            if lessonTypeIndex == lessonType.endIndex {
+                print ("en")
+            }
+            else {
+                print ("ELSE")
+                if String.Index(encodedOffset: index) < lessonType.endIndex {
+                indexs += 1
+                }
+                lessonTypeIndex = lessonType.index(lessonType.startIndex, offsetBy: indexs)
+            }
+            }
+            indexs = 0
         }
+        
     }
-    return ""
+    print ("end \(startIndex)")
+    return lessonTitle.capitalized
 }
 
 
