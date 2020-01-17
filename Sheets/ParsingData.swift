@@ -202,12 +202,14 @@ func parsingSheets(sheets: Sheets, numberOfLessons: [Int], rangeIndexes: (startC
                 if ((rowIndex - correctionIndex) % 4 == 3) || (rowIndex == data.rowData.count - 1) {
                     
                     if whiteWeekLessonTitle != nil {
-                    whiteWeekLessonMainType = getLessonMainType(lessonTitle: whiteWeekLessonTitle!)
+                        let buf = getLessonMainType(lessonTitle: whiteWeekLessonTitle!)
+                        whiteWeekLessonMainType = buf.mainType
+                        whiteWeekLessonTitle = buf.title
                     }
                     
                     
                     let whiteWeekLesson = Lesson(lessonStartTime: lessonStartTime, subgroup: whiteWeekSubgroup, lessonTitle: whiteWeekLessonTitle, teacherName: whiteWeekTeacherName, lessonType: whiteWeekLessonType, lessonMainType: whiteWeekLessonMainType, learningCampus: whiteWeekLearningCampus, learningCampusIsIncorrect: whiteWeekLearningCampusIsIncorrect, lectureRoom: whiteWeekLectureRoom, lectureRoomIsIncorrect: whiteWeekLectureRoomIsIncorrect, note: whiteWeekNote)
-                    let blueWeekLesson = Lesson(lessonStartTime: lessonStartTime, subgroup: blueWeekSubgroup, lessonTitle: blueWeekLessonTitle, teacherName: blueWeekTeacherName, lessonType: blueWeekLessonType, lessonMainType: nil, learningCampus: blueWeekLearningCampus, learningCampusIsIncorrect: blueWeekLearningCampusIsIncorrect, lectureRoom: blueWeekLectureRoom, lectureRoomIsIncorrect: blueWeekLectureRoomIsIncorrect, note: blueWeekNote)
+                    let blueWeekLesson = Lesson(lessonStartTime: lessonStartTime, subgroup: blueWeekSubgroup, lessonTitle: blueWeekLessonTitle, teacherName: blueWeekTeacherName, lessonType: blueWeekLessonType, lessonMainType: blueWeekLessonMainType, learningCampus: blueWeekLearningCampus, learningCampusIsIncorrect: blueWeekLearningCampusIsIncorrect, lectureRoom: blueWeekLectureRoom, lectureRoomIsIncorrect: blueWeekLectureRoomIsIncorrect, note: blueWeekNote)
                     
                     whiteWeakDay.append(whiteWeekLesson)
                     blueWeakDay.append(blueWeekLesson)
@@ -247,34 +249,37 @@ func parsingSheets(sheets: Sheets, numberOfLessons: [Int], rangeIndexes: (startC
 
 
 func titleFormatting (lessonTitle: String, lessonType: String) -> String {
-    var indexs = 0
-    var lessonTypeIndex = lessonType.index(lessonType.startIndex, offsetBy: indexs)
+    var findStringindex = 0
+    var lessonTypeIndex = lessonType.index(lessonType.startIndex, offsetBy: findStringindex)
     var startIndex = 0
+    var endIndex = lessonTitle.count
+    var lessonTitle = lessonTitle.lowercased()
     for (index, char) in lessonTitle.enumerated() {
-        print (index)
-        if char ==  lessonType[lessonTypeIndex] {
+        lessonTypeIndex = lessonType.index(lessonType.startIndex, offsetBy: findStringindex)
+        
+        if char == lessonType[lessonTypeIndex] {
             if lessonTypeIndex == lessonType.startIndex {
                 startIndex = index
-                print ("FIRST")
             }
-            else {
-            if lessonTypeIndex == lessonType.endIndex {
-                print ("en")
+            
+            if findStringindex == lessonType.count - 1 {
+                endIndex = startIndex
+                break
             }
-            else {
-                print ("ELSE")
-                if String.Index(encodedOffset: index) < lessonType.endIndex {
-                indexs += 1
-                }
-                lessonTypeIndex = lessonType.index(lessonType.startIndex, offsetBy: indexs)
-            }
-            }
-            indexs = 0
+            
+            findStringindex += 1
         }
-        
+        else {
+            findStringindex = 0
+        }
     }
-    print ("end \(startIndex)")
-    return lessonTitle.capitalized
+    
+    let index = lessonTitle.index(lessonType.startIndex, offsetBy: endIndex)
+    
+    lessonTitle = String(lessonTitle[..<index])
+    lessonTitle = lessonTitle.prefix(1).capitalized + lessonTitle.dropFirst()
+    
+    return lessonTitle
 }
 
 
@@ -301,19 +306,19 @@ func getLessonType(effectiveFormat: EffectiveFormat) -> LessonType {
 }
 
 
-func getLessonMainType(lessonTitle: String) -> LessonMainType? {
+func getLessonMainType(lessonTitle: String) -> (mainType: LessonMainType?, title: String) {
     if lessonTitle.contains("(ЛБ)") {
-        return .laboratoryWork
+        return (.laboratoryWork, titleFormatting(lessonTitle: lessonTitle, lessonType: "(лб)"))
     }
     
     if lessonTitle.contains("(ЛК)") {
-        return .lecture
+        return (.lecture, titleFormatting(lessonTitle: lessonTitle, lessonType: "(лк)"))
     }
     
     if lessonTitle.contains("(ПР)") {
-        return .practice
+        return (.practice, titleFormatting(lessonTitle: lessonTitle, lessonType: "(пр)"))
     }
-    return .none
+    return (.none, lessonTitle)
 }
 
 

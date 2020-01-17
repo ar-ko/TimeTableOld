@@ -9,13 +9,13 @@
 import UIKit
 
 class MainViewController: UITableViewController {
-
+    
     var timeTable = [[Lesson]]()
     let currentDayIndex = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let spreadsheetId = "1JMzfHOcOvImZPV5zfO4im2BWIW4LllN42uxvPdpQKaQ"
         let sheetId = "%D0%BF%D1%80%D0%BE%D1%84%D1%8B" // профы
         
@@ -47,77 +47,42 @@ class MainViewController: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         
         return timeTable.isEmpty ? 0:timeTable[currentDayIndex].count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! LessonCell
-
+        
         if !timeTable.isEmpty {
-        cell.startTimeLabel.text = timeTable[currentDayIndex][indexPath.row].lessonStartTime
-        cell.placeLabel.text = String(timeTable[currentDayIndex][indexPath.row].learningCampus ?? "") + "\n" + String(timeTable[currentDayIndex][indexPath.row].lectureRoom ?? "")
+            cell.startTimeLabel.text = timeTable[currentDayIndex][indexPath.row].lessonStartTime
+            cell.placeLabel.text = String(timeTable[currentDayIndex][indexPath.row].learningCampus ?? "") + "\n" + String(timeTable[currentDayIndex][indexPath.row].lectureRoom ?? "")
             cell.teacherName.text = timeTable[currentDayIndex][indexPath.row].teacherName
             cell.title.text = timeTable[currentDayIndex][indexPath.row].lessonTitle
             
+            
             switch timeTable[currentDayIndex][indexPath.row].lessonMainType {
             case .laboratoryWork: cell.lessonType.text = "Лабораторная работа"
+                                cell.lessonTypeIndicator.backgroundColor = .black
+                cell.lessonType.textColor = .black
             case .lecture: cell.lessonType.text = "Лекция"
+            cell.lessonType.textColor = .green
+                cell.lessonTypeIndicator.backgroundColor = .green
             case .practice: cell.lessonType.text = "Практическое занятие"
+            cell.lessonType.textColor = .brown
+            cell.lessonTypeIndicator.backgroundColor = .brown
             default: cell.lessonType.text = ""
             }
             
         }
-
+        
         return cell
     }
     
-    /*override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
-    }*/
-        
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
