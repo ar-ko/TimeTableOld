@@ -250,10 +250,10 @@ func parsingSheets(sheets: Sheets, numberOfLessons: [Int], rangeIndexes: (startC
 
 func titleFormatting (lessonTitle: String, lessonType: String) -> String {
     var findStringindex = 0
-    var lessonTypeIndex = lessonType.index(lessonType.startIndex, offsetBy: findStringindex)
-    var startIndex = 0
-    var endIndex = lessonTitle.count
+    var lessonTypeIndex: String.Index
+    var startIndex = lessonTitle.count
     var lessonTitle = lessonTitle.lowercased()
+    
     for (index, char) in lessonTitle.enumerated() {
         lessonTypeIndex = lessonType.index(lessonType.startIndex, offsetBy: findStringindex)
         
@@ -261,9 +261,7 @@ func titleFormatting (lessonTitle: String, lessonType: String) -> String {
             if lessonTypeIndex == lessonType.startIndex {
                 startIndex = index
             }
-            
             if findStringindex == lessonType.count - 1 {
-                endIndex = startIndex
                 break
             }
             
@@ -271,10 +269,11 @@ func titleFormatting (lessonTitle: String, lessonType: String) -> String {
         }
         else {
             findStringindex = 0
+            startIndex = lessonTitle.count
         }
     }
     
-    let index = lessonTitle.index(lessonType.startIndex, offsetBy: endIndex)
+    let index = lessonTitle.index(lessonType.startIndex, offsetBy: startIndex)
     
     lessonTitle = String(lessonTitle[..<index])
     lessonTitle = lessonTitle.prefix(1).capitalized + lessonTitle.dropFirst()

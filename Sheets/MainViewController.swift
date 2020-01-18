@@ -69,14 +69,8 @@ class MainViewController: UITableViewController {
             
             switch timeTable[currentDayIndex][indexPath.row].lessonMainType {
             case .laboratoryWork: cell.lessonType.text = "Лабораторная работа"
-                                cell.lessonTypeIndicator.backgroundColor = .black
-                cell.lessonType.textColor = .black
             case .lecture: cell.lessonType.text = "Лекция"
-            cell.lessonType.textColor = .green
-                cell.lessonTypeIndicator.backgroundColor = .green
             case .practice: cell.lessonType.text = "Практическое занятие"
-            cell.lessonType.textColor = .brown
-            cell.lessonTypeIndicator.backgroundColor = .brown
             default: cell.lessonType.text = ""
             }
             
