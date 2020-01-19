@@ -248,6 +248,26 @@ func parsingSheets(sheets: Sheets, numberOfLessons: [Int], rangeIndexes: (startC
 }
 
 
+func timeDecompile(time: String) {
+    var hours = ""
+    var minutes = ""
+    let numbers = "0123456789"
+    var timeIsNotChange = true
+    
+    for s in time {
+        if numbers.contains(s) && timeIsNotChange {
+            hours += String(s)
+        }
+        if numbers.contains(s) && !timeIsNotChange {
+            minutes += String(s)
+        }
+        if !numbers.contains(s){
+            timeIsChange = false
+        }
+    }
+}
+
+
 func titleFormatting (lessonTitle: String, lessonType: String) -> String {
     var findStringindex = 0
     var lessonTypeIndex: String.Index
