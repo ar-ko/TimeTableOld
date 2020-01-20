@@ -39,11 +39,11 @@ class MainViewController: UITableViewController {
         getTimetable(urlString: urlString, rangeIndexes: (startColumnIndex: startColumnIndex, startRowIndex: startRowIndex, endColumnIndex: endColumnIndex, endRowIndex: endRowIndex)) {(kek) in
             self.timeTable = kek
             self.tableView.reloadData()
-            self.tableView.estimatedRowHeight = 50
+            self.tableView.estimatedRowHeight = 25
             self.tableView.rowHeight = UITableView.automaticDimension
         }
         
-        tableView.estimatedRowHeight = 50
+        tableView.estimatedRowHeight = 25
         tableView.rowHeight = UITableView.automaticDimension
         
     }
@@ -61,7 +61,12 @@ class MainViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! LessonCell
         
         if !timeTable.isEmpty {
-            cell.startTimeLabel.text = timeTable[currentDayIndex][indexPath.row].lessonStartTime
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "H:mm"
+            
+            cell.startTimeLabel.text = dateFormatter.string(from: timeTable[currentDayIndex][indexPath.row].lessonStartTime)
+            cell.endTimeLabel.text = dateFormatter.string(from: timeTable[currentDayIndex][indexPath.row].lessonStartTime.addingTimeInterval(90.0 * 60.0))
             cell.placeLabel.text = String(timeTable[currentDayIndex][indexPath.row].learningCampus ?? "") + "\n" + String(timeTable[currentDayIndex][indexPath.row].lectureRoom ?? "")
             cell.teacherName.text = timeTable[currentDayIndex][indexPath.row].teacherName
             cell.title.text = timeTable[currentDayIndex][indexPath.row].lessonTitle

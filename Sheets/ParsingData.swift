@@ -208,8 +208,9 @@ func parsingSheets(sheets: Sheets, numberOfLessons: [Int], rangeIndexes: (startC
                     }
                     
                     
-                    let whiteWeekLesson = Lesson(lessonStartTime: lessonStartTime, subgroup: whiteWeekSubgroup, lessonTitle: whiteWeekLessonTitle, teacherName: whiteWeekTeacherName, lessonType: whiteWeekLessonType, lessonMainType: whiteWeekLessonMainType, learningCampus: whiteWeekLearningCampus, learningCampusIsIncorrect: whiteWeekLearningCampusIsIncorrect, lectureRoom: whiteWeekLectureRoom, lectureRoomIsIncorrect: whiteWeekLectureRoomIsIncorrect, note: whiteWeekNote)
-                    let blueWeekLesson = Lesson(lessonStartTime: lessonStartTime, subgroup: blueWeekSubgroup, lessonTitle: blueWeekLessonTitle, teacherName: blueWeekTeacherName, lessonType: blueWeekLessonType, lessonMainType: blueWeekLessonMainType, learningCampus: blueWeekLearningCampus, learningCampusIsIncorrect: blueWeekLearningCampusIsIncorrect, lectureRoom: blueWeekLectureRoom, lectureRoomIsIncorrect: blueWeekLectureRoomIsIncorrect, note: blueWeekNote)
+                    
+                    let whiteWeekLesson = Lesson(lessonStartTime: dateParser(dateString: lessonStartTime!)!, subgroup: whiteWeekSubgroup, lessonTitle: whiteWeekLessonTitle, teacherName: whiteWeekTeacherName, lessonType: whiteWeekLessonType, lessonMainType: whiteWeekLessonMainType, learningCampus: whiteWeekLearningCampus, learningCampusIsIncorrect: whiteWeekLearningCampusIsIncorrect, lectureRoom: whiteWeekLectureRoom, lectureRoomIsIncorrect: whiteWeekLectureRoomIsIncorrect, note: whiteWeekNote)
+                    let blueWeekLesson = Lesson(lessonStartTime: dateParser(dateString: lessonStartTime!)!, subgroup: blueWeekSubgroup, lessonTitle: blueWeekLessonTitle, teacherName: blueWeekTeacherName, lessonType: blueWeekLessonType, lessonMainType: blueWeekLessonMainType, learningCampus: blueWeekLearningCampus, learningCampusIsIncorrect: blueWeekLearningCampusIsIncorrect, lectureRoom: blueWeekLectureRoom, lectureRoomIsIncorrect: blueWeekLectureRoomIsIncorrect, note: blueWeekNote)
                     
                     whiteWeakDay.append(whiteWeekLesson)
                     blueWeakDay.append(blueWeekLesson)
@@ -248,23 +249,27 @@ func parsingSheets(sheets: Sheets, numberOfLessons: [Int], rangeIndexes: (startC
 }
 
 
-func timeDecompile(time: String) {
-    var hours = ""
-    var minutes = ""
-    let numbers = "0123456789"
-    var timeIsNotChange = true
+func dateParser(dateString: String) -> Date? {
+    let userCalendar = Calendar.current
     
-    for s in time {
-        if numbers.contains(s) && timeIsNotChange {
-            hours += String(s)
-        }
-        if numbers.contains(s) && !timeIsNotChange {
-            minutes += String(s)
-        }
-        if !numbers.contains(s){
-            timeIsChange = false
-        }
+    let range = NSRange(location: 0, length: dateString.count)
+    let pattern = "[0-9]{1,2}"
+    
+    let regex = try! NSRegularExpression(pattern: pattern)
+    let regexMatches = regex.matches(in: dateString, options: [], range: range)
+    
+    if regexMatches.count == 2 {
+        var dateComponents = DateComponents()
+        
+        var range = Range(regexMatches.first!.range, in: dateString)
+        dateComponents.hour = Int(dateString[range!])
+        
+        range = Range(regexMatches.last!.range, in: dateString)
+        dateComponents.minute = Int(dateString[range!])
+        
+        return userCalendar.date(from: dateComponents)
     }
+    return nil
 }
 
 

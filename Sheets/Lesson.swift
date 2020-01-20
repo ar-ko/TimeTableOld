@@ -9,7 +9,7 @@
 import UIKit
 
 struct Lesson {
-    let lessonStartTime: String?
+    let lessonStartTime: Date
     let subgroup: Subgroup?
     let lessonTitle: String?
     let teacherName: String?
