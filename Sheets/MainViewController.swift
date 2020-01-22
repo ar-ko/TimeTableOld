@@ -73,7 +73,7 @@ class MainViewController: UITableViewController {
             
             
             switch timeTable[currentDayIndex][indexPath.row].lessonMainType {
-            case .laboratoryWork: cell.lessonType.text = "Лабораторная работа"
+            case .laboratoryWork: cell.lessonType.text = "Лабораторная работа"               
             case .lecture: cell.lessonType.text = "Лекция"
             case .practice: cell.lessonType.text = "Практическое занятие"
             default: cell.lessonType.text = ""

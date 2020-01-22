@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qsN-Sd-NFE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qsN-Sd-NFE">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -47,29 +47,20 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T78-TX-ofn">
-                                            <rect key="frame" x="277.33333333333331" y="8" width="54.666666666666686" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="47a-ki-47s"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T78-TX-ofn">
+                                            <rect key="frame" x="277.33333333333331" y="8" width="54.666666666666686" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2d-1a-qVE">
-                                            <rect key="frame" x="80.333333333333329" y="37" width="240.66666666666669" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="MNZ-2T-uDt"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2d-1a-qVE">
+                                            <rect key="frame" x="80.333333333333329" y="34" width="240.66666666666669" height="20.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtQ-ax-gcT">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtQ-ax-gcT">
                                             <rect key="frame" x="80.333333333333329" y="66" width="240.66666666666669" height="18"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="SMF-MH-Die"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -107,7 +98,7 @@
                                         <constraint firstItem="T2d-1a-qVE" firstAttribute="leading" secondItem="aPF-e7-noi" secondAttribute="trailing" constant="16" id="onl-W9-tbJ"/>
                                         <constraint firstItem="T2d-1a-qVE" firstAttribute="top" secondItem="T78-TX-ofn" secondAttribute="bottom" constant="8" id="pDi-q5-s0O"/>
                                         <constraint firstAttribute="bottom" secondItem="dtQ-ax-gcT" secondAttribute="bottom" constant="8" id="qrV-SN-9bk"/>
-                                        <constraint firstItem="aOp-jK-p0r" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kaW-jV-n4I" secondAttribute="bottom" constant="8" id="vjq-lk-9dg"/>
+                                        <constraint firstItem="aOp-jK-p0r" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kaW-jV-n4I" secondAttribute="bottom" constant="16" id="vjq-lk-9dg"/>
                                         <constraint firstItem="aPF-e7-noi" firstAttribute="leading" secondItem="aOp-jK-p0r" secondAttribute="trailing" constant="8" id="xBr-iL-UGz"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -120,7 +111,9 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="endTimeLabel" destination="aOp-jK-p0r" id="J06-ea-SqK"/>
+                                    <outlet property="lessonTitleConstraint" destination="OzS-7A-8Fg" id="IgW-Yq-WL8"/>
                                     <outlet property="lessonType" destination="T78-TX-ofn" id="AYX-mC-jHg"/>
+                                    <outlet property="lessonTypeConstraint" destination="pDi-q5-s0O" id="OtZ-jp-rc4"/>
                                     <outlet property="lessonTypeIndicator" destination="aPF-e7-noi" id="g0c-uk-hTT"/>
                                     <outlet property="placeLabel" destination="eNT-tq-IYm" id="jMO-AO-pXP"/>
                                     <outlet property="startTimeLabel" destination="kaW-jV-n4I" id="EuR-o3-Pv6"/>
