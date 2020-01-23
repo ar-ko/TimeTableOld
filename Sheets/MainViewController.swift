@@ -11,12 +11,27 @@ import UIKit
 class MainViewController: UITableViewController {
     
     var timeTable = [[Lesson]]()
-    let currentDayIndex = 3
+    var currentDayIndex = 0
     
+    @IBAction func incrementDay(_ sender: Any) {
+        currentDayIndex += 1
+        if currentDayIndex == timeTable.count {
+            currentDayIndex = 0
+        }
+        self.tableView.reloadData()
+    }
+    
+    @IBAction func decrementDay(_ sender: Any) {
+        currentDayIndex -= 1
+        if currentDayIndex == -1 {
+                   currentDayIndex = timeTable.count - 1
+               }
+        self.tableView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let spreadsheetId = "1JMzfHOcOvImZPV5zfO4im2BWIW4LllN42uxvPdpQKaQ"
+        let spreadsheetId = "1CrVXpFRuvS4iq8nvGpd27-CeUcnzsRmbNc9nh2CWcWw"//"1JMzfHOcOvImZPV5zfO4im2BWIW4LllN42uxvPdpQKaQ"
         let sheetId = "%D0%BF%D1%80%D0%BE%D1%84%D1%8B" // профы
         
         let startColumn = "B"
@@ -36,14 +51,17 @@ class MainViewController: UITableViewController {
         
         let urlString = "https://sheets.googleapis.com/v4/spreadsheets/\(spreadsheetId)?ranges=\(sheetId)!\(range)&fields=\(fields)&key=\(apiKey)"
         
-        getTimetable(urlString: urlString, rangeIndexes: (startColumnIndex: startColumnIndex, startRowIndex: startRowIndex, endColumnIndex: endColumnIndex, endRowIndex: endRowIndex)) {(kek) in
-            self.timeTable = kek
+        
+        getTimetable(urlString: urlString, rangeIndexes: (startColumnIndex: startColumnIndex, startRowIndex: startRowIndex, endColumnIndex: endColumnIndex, endRowIndex: endRowIndex)) {(timeTable) in
+            DispatchQueue.main.async{
+            self.timeTable = timeTable
             self.tableView.reloadData()
-            self.tableView.estimatedRowHeight = 25
+            self.tableView.estimatedRowHeight = 50
             self.tableView.rowHeight = UITableView.automaticDimension
+            }
         }
         
-        tableView.estimatedRowHeight = 25
+        tableView.estimatedRowHeight = 50
         tableView.rowHeight = UITableView.automaticDimension
         
     }

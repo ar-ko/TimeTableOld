@@ -158,8 +158,7 @@ func parsingSheets(sheets: Sheets, numberOfLessons: [Int], rangeIndexes: (startC
                             switch columnIndex % 4 {
                             case 0: lessonStartTime = lessonStartTime == nil ? value.formattedValue: lessonStartTime
                             case 1:if value.formattedValue != nil {
-                                if cellIsMerged(in: sheets, columnIndex: rangeIndexes.startColumnIndex + columnIndex,
-                                                rowIndex: rangeIndexes.startRowIndex + rowIndex){
+                                if cellIsMerged(in: sheets, columnIndex: rangeIndexes.startColumnIndex + columnIndex, rowIndex: rangeIndexes.startRowIndex + rowIndex){
                                     blueWeekSubgroup = .general
                                 }
                                 else {
@@ -208,12 +207,19 @@ func parsingSheets(sheets: Sheets, numberOfLessons: [Int], rangeIndexes: (startC
                     }
                     
                     
-                    
+                    if whiteWeekLessonTitle != nil {
                     let whiteWeekLesson = Lesson(lessonStartTime: dateParser(dateString: lessonStartTime!)!, subgroup: whiteWeekSubgroup, lessonTitle: whiteWeekLessonTitle, teacherName: whiteWeekTeacherName, lessonType: whiteWeekLessonType, lessonMainType: whiteWeekLessonMainType, learningCampus: whiteWeekLearningCampus, learningCampusIsIncorrect: whiteWeekLearningCampusIsIncorrect, lectureRoom: whiteWeekLectureRoom, lectureRoomIsIncorrect: whiteWeekLectureRoomIsIncorrect, note: whiteWeekNote)
+                        
+                        whiteWeakDay.append(whiteWeekLesson)
+                    }
+                    if blueWeekLessonTitle != nil {
                     let blueWeekLesson = Lesson(lessonStartTime: dateParser(dateString: lessonStartTime!)!, subgroup: blueWeekSubgroup, lessonTitle: blueWeekLessonTitle, teacherName: blueWeekTeacherName, lessonType: blueWeekLessonType, lessonMainType: blueWeekLessonMainType, learningCampus: blueWeekLearningCampus, learningCampusIsIncorrect: blueWeekLearningCampusIsIncorrect, lectureRoom: blueWeekLectureRoom, lectureRoomIsIncorrect: blueWeekLectureRoomIsIncorrect, note: blueWeekNote)
+                        
+                        blueWeakDay.append(blueWeekLesson)
+                    }
                     
-                    whiteWeakDay.append(whiteWeekLesson)
-                    blueWeakDay.append(blueWeekLesson)
+                    
+                    
                     
                     lessonStartTime = nil
                     
