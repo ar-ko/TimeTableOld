@@ -206,6 +206,11 @@ func parsingSheets(sheets: Sheets, numberOfLessons: [Int], rangeIndexes: (startC
                         whiteWeekLessonTitle = buf.title
                     }
                     
+                    if blueWeekLessonTitle != nil {
+                        let buf = getLessonMainType(lessonTitle: blueWeekLessonTitle!)
+                        blueWeekLessonMainType = buf.mainType
+                        blueWeekLessonTitle = buf.title
+                    }
                     
                     if whiteWeekLessonTitle != nil {
                     let whiteWeekLesson = Lesson(lessonStartTime: dateParser(dateString: lessonStartTime!)!, subgroup: whiteWeekSubgroup, lessonTitle: whiteWeekLessonTitle, teacherName: whiteWeekTeacherName, lessonType: whiteWeekLessonType, lessonMainType: whiteWeekLessonMainType, learningCampus: whiteWeekLearningCampus, learningCampusIsIncorrect: whiteWeekLearningCampusIsIncorrect, lectureRoom: whiteWeekLectureRoom, lectureRoomIsIncorrect: whiteWeekLectureRoomIsIncorrect, note: whiteWeekNote)
@@ -279,20 +284,21 @@ func dateParser(dateString: String) -> Date? {
 }
 
 
-func titleFormatting (lessonTitle: String, lessonType: String) -> String {
+func titleFormatting (lessonTitle: String, lessonType: String?) -> String {
     var findStringindex = 0
     var lessonTypeIndex: String.Index
     var startIndex = lessonTitle.count
     var lessonTitle = lessonTitle.lowercased()
     
+    if lessonType != nil {
     for (index, char) in lessonTitle.enumerated() {
-        lessonTypeIndex = lessonType.index(lessonType.startIndex, offsetBy: findStringindex)
+        lessonTypeIndex = lessonType!.index(lessonType!.startIndex, offsetBy: findStringindex)
         
-        if char == lessonType[lessonTypeIndex] {
-            if lessonTypeIndex == lessonType.startIndex {
+        if char == lessonType![lessonTypeIndex] {
+            if lessonTypeIndex == lessonType!.startIndex {
                 startIndex = index
             }
-            if findStringindex == lessonType.count - 1 {
+            if findStringindex == lessonType!.count - 1 {
                 break
             }
             
@@ -304,9 +310,10 @@ func titleFormatting (lessonTitle: String, lessonType: String) -> String {
         }
     }
     
-    let index = lessonTitle.index(lessonType.startIndex, offsetBy: startIndex)
-    
+    let index = lessonTitle.index(lessonType!.startIndex, offsetBy: startIndex)
+        
     lessonTitle = String(lessonTitle[..<index])
+    }
     lessonTitle = lessonTitle.prefix(1).capitalized + lessonTitle.dropFirst()
     
     return lessonTitle
@@ -348,7 +355,7 @@ func getLessonMainType(lessonTitle: String) -> (mainType: LessonMainType?, title
     if lessonTitle.contains("(ПР)") {
         return (.practice, titleFormatting(lessonTitle: lessonTitle, lessonType: "(пр)"))
     }
-    return (.none, lessonTitle)
+    return (.none, titleFormatting(lessonTitle: lessonTitle, lessonType: nil))
 }
 
 
