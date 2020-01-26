@@ -10,20 +10,38 @@
         <scene sceneID="bIM-WP-j6y">
             <objects>
                 <tableViewController id="s01-DU-008" customClass="MainViewController" customModule="Sheets" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="S8w-xx-of3">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="S8w-xx-of3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="lCl-9g-8cc">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Расписание" id="VtM-hy-Ze4">
+                                    <barButtonItem key="leftBarButtonItem" image="arrowtriangle.left.fill" catalog="system" id="BXN-fZ-qqp">
+                                        <connections>
+                                            <action selector="decrementDay:" destination="s01-DU-008" id="Pdp-DD-ui5"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem key="rightBarButtonItem" image="arrowtriangle.right.fill" catalog="system" style="plain" id="gOc-yH-KW3">
+                                        <connections>
+                                            <action selector="incrementDay:" destination="s01-DU-008" id="C5h-eI-S4K"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="79" id="uOc-rs-j5X" customClass="LessonCell" customModule="Sheets" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="79"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="79" id="uOc-rs-j5X" customClass="LessonCell" customModule="Sheets" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="414" height="79"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uOc-rs-j5X" id="dMw-Tf-UOg">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPF-e7-noi">
-                                            <rect key="frame" x="62.333333333333336" y="3.3333333333333357" width="2.0000000000000071" height="72.333333333333314"/>
+                                            <rect key="frame" x="62.333333333333336" y="8" width="2.0000000000000071" height="63"/>
                                             <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="2" id="Vy1-PH-IQC"/>
@@ -31,14 +49,14 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hbh-u8-PYE">
-                                            <rect key="frame" x="337" y="3.3333333333333357" width="2" height="72.333333333333314"/>
+                                            <rect key="frame" x="337" y="8" width="2" height="63"/>
                                             <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="WGN-kf-ic5"/>
                                                 <constraint firstAttribute="width" constant="2" id="k9l-oR-Z7X"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNT-tq-IYm">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNT-tq-IYm">
                                             <rect key="frame" x="347" y="29.333333333333336" width="59" height="20.333333333333336"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="tqX-pR-Cy8"/>
@@ -113,10 +131,10 @@
                                 </tableViewCellContentView>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Hbh-u8-PYE" secondAttribute="trailing" constant="75" id="0uF-tQ-7fA"/>
-                                    <constraint firstAttribute="bottom" secondItem="aPF-e7-noi" secondAttribute="bottom" constant="3.3333307902018134" id="6O4-5U-6cK"/>
-                                    <constraint firstAttribute="bottom" secondItem="Hbh-u8-PYE" secondAttribute="bottom" constant="3.3333307902018134" id="PcB-zu-pE5"/>
-                                    <constraint firstItem="Hbh-u8-PYE" firstAttribute="top" secondItem="uOc-rs-j5X" secondAttribute="top" constant="3.3333333333333357" id="RLi-Pj-Xr5"/>
-                                    <constraint firstItem="aPF-e7-noi" firstAttribute="top" secondItem="uOc-rs-j5X" secondAttribute="top" constant="3.3333333333333357" id="xq6-aM-w9j"/>
+                                    <constraint firstAttribute="bottom" secondItem="aPF-e7-noi" secondAttribute="bottom" constant="8" id="6O4-5U-6cK"/>
+                                    <constraint firstAttribute="bottom" secondItem="Hbh-u8-PYE" secondAttribute="bottom" constant="8" id="PcB-zu-pE5"/>
+                                    <constraint firstItem="Hbh-u8-PYE" firstAttribute="top" secondItem="uOc-rs-j5X" secondAttribute="top" constant="8" id="RLi-Pj-Xr5"/>
+                                    <constraint firstItem="aPF-e7-noi" firstAttribute="top" secondItem="uOc-rs-j5X" secondAttribute="top" constant="8" id="xq6-aM-w9j"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="endTimeLabel" destination="aOp-jK-p0r" id="J06-ea-SqK"/>
@@ -134,10 +152,17 @@
                             <outlet property="delegate" destination="s01-DU-008" id="PFE-q7-uMw"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="navigationBar" destination="lCl-9g-8cc" id="SOM-hN-VcL"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOa-Ff-u4d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="521.73913043478262" y="-93.080357142857139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrowtriangle.left.fill" catalog="system" width="64" height="56"/>
+        <image name="arrowtriangle.right.fill" catalog="system" width="64" height="56"/>
+    </resources>
 </document>

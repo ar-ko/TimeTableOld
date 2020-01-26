@@ -355,6 +355,9 @@ func getLessonMainType(lessonTitle: String) -> (mainType: LessonMainType?, title
     if lessonTitle.contains("(ПР)") {
         return (.practice, titleFormatting(lessonTitle: lessonTitle, lessonType: "(пр)"))
     }
+    if lessonTitle.contains("(ОЗНАКОМИТЕЛЬНАЯ)") {
+        return (.practice, titleFormatting(lessonTitle: lessonTitle, lessonType: nil))
+    }
     return (.none, titleFormatting(lessonTitle: lessonTitle, lessonType: nil))
 }
 
