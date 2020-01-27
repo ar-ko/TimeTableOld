@@ -165,22 +165,19 @@ class MainViewController: UITableViewController {
         }
         
         let numberOfWeek = (days + dateCorrection) / 7
-        
-        print (calendar.component(.weekday, from: currentDate))
-        
         switch numberOfWeek.isMultiple(of: 2){
         case true:
             if calendar.component(.weekday, from: currentDate) == 1 {
                 return 6
             }
             else {
-            return calendar.component(.weekday, from: currentDate) - 1
+            return calendar.component(.weekday, from: currentDate) - 2
             }
         case false:
             if calendar.component(.weekday, from: currentDate) == 1 {
                 return 0
             }
-            return 5 + calendar.component(.weekday, from: startDate) - 1
+            return 6 + calendar.component(.weekday, from: startDate) - 2
         }
     }
     

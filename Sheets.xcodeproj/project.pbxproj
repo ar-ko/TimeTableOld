@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		BB2541D223C0B5F600AFF889 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2541D123C0B5F600AFF889 /* MainViewController.swift */; };
+		BB62AE3523DF5D7500CE1D52 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB62AE3423DF5D7500CE1D52 /* TimeTableViewController.swift */; };
 		BBAC0EED23A28BDD009D50DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC0EEC23A28BDD009D50DB /* AppDelegate.swift */; };
 		BBAC0EEF23A28BDD009D50DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC0EEE23A28BDD009D50DB /* SceneDelegate.swift */; };
-		BBAC0EF423A28BDD009D50DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBAC0EF223A28BDD009D50DB /* Main.storyboard */; };
+		BBAC0EF423A28BDD009D50DB /* TimeTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBAC0EF223A28BDD009D50DB /* TimeTable.storyboard */; };
 		BBAC0EF623A28BDE009D50DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBAC0EF523A28BDE009D50DB /* Assets.xcassets */; };
 		BBAC0EF923A28BDE009D50DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBAC0EF723A28BDE009D50DB /* LaunchScreen.storyboard */; };
 		BBB3937C23CA138000EEA15C /* LessonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB3937B23CA137F00EEA15C /* LessonCell.swift */; };
@@ -21,10 +22,11 @@
 
 /* Begin PBXFileReference section */
 		BB2541D123C0B5F600AFF889 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		BBAC0EE923A28BDD009D50DB /* Sheets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sheets.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB62AE3423DF5D7500CE1D52 /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
+		BBAC0EE923A28BDD009D50DB /* timeTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timeTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBAC0EEC23A28BDD009D50DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBAC0EEE23A28BDD009D50DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BBAC0EF323A28BDD009D50DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BBAC0EF323A28BDD009D50DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TimeTable.storyboard; sourceTree = "<group>"; };
 		BBAC0EF523A28BDE009D50DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBAC0EF823A28BDE009D50DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BBAC0EFA23A28BDE009D50DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +47,94 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB62AE2A23DF40CC00CE1D52 /* Old Project */ = {
+			isa = PBXGroup;
+			children = (
+				BB2541D123C0B5F600AFF889 /* MainViewController.swift */,
+				BBB3937B23CA137F00EEA15C /* LessonCell.swift */,
+				BBAC0EEE23A28BDD009D50DB /* SceneDelegate.swift */,
+				BBDE39A123AFDFBA0056C801 /* Lesson.swift */,
+				BBDE399F23AFDF630056C801 /* OriginalSheets.swift */,
+				BBDE399D23AF79A40056C801 /* ParsingData.swift */,
+			);
+			path = "Old Project";
+			sourceTree = "<group>";
+		};
+		BB62AE2B23DF422F00CE1D52 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BB62AE2C23DF424500CE1D52 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BBAC0EF723A28BDE009D50DB /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BB62AE2D23DF424F00CE1D52 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BBAC0EEC23A28BDD009D50DB /* AppDelegate.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BB62AE2E23DF428500CE1D52 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				BB62AE2B23DF422F00CE1D52 /* Model */,
+				BB62AE2C23DF424500CE1D52 /* View */,
+				BB62AE2D23DF424F00CE1D52 /* Controller */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		BB62AE2F23DF43C000CE1D52 /* TimeTable */ = {
+			isa = PBXGroup;
+			children = (
+				BB62AE3223DF43FB00CE1D52 /* Model */,
+				BB62AE3123DF43F600CE1D52 /* View */,
+				BB62AE3023DF43E900CE1D52 /* Controller */,
+			);
+			path = TimeTable;
+			sourceTree = "<group>";
+		};
+		BB62AE3023DF43E900CE1D52 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BB62AE3423DF5D7500CE1D52 /* TimeTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BB62AE3123DF43F600CE1D52 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BBAC0EF223A28BDD009D50DB /* TimeTable.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BB62AE3223DF43FB00CE1D52 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BB62AE3323DF454000CE1D52 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				BBAC0EF523A28BDE009D50DB /* Assets.xcassets */,
+				BBAC0EFA23A28BDE009D50DB /* Info.plist */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
 		BBAC0EE023A28BDD009D50DB = {
 			isa = PBXGroup;
 			children = (
@@ -56,7 +146,7 @@
 		BBAC0EEA23A28BDD009D50DB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BBAC0EE923A28BDD009D50DB /* Sheets.app */,
+				BBAC0EE923A28BDD009D50DB /* timeTable.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,17 +154,10 @@
 		BBAC0EEB23A28BDD009D50DB /* Sheets */ = {
 			isa = PBXGroup;
 			children = (
-				BBAC0EEC23A28BDD009D50DB /* AppDelegate.swift */,
-				BB2541D123C0B5F600AFF889 /* MainViewController.swift */,
-				BBB3937B23CA137F00EEA15C /* LessonCell.swift */,
-				BBAC0EEE23A28BDD009D50DB /* SceneDelegate.swift */,
-				BBDE39A123AFDFBA0056C801 /* Lesson.swift */,
-				BBDE399F23AFDF630056C801 /* OriginalSheets.swift */,
-				BBDE399D23AF79A40056C801 /* ParsingData.swift */,
-				BBAC0EF223A28BDD009D50DB /* Main.storyboard */,
-				BBAC0EF523A28BDE009D50DB /* Assets.xcassets */,
-				BBAC0EF723A28BDE009D50DB /* LaunchScreen.storyboard */,
-				BBAC0EFA23A28BDE009D50DB /* Info.plist */,
+				BB62AE2E23DF428500CE1D52 /* Application */,
+				BB62AE2F23DF43C000CE1D52 /* TimeTable */,
+				BB62AE3323DF454000CE1D52 /* Supporting files */,
+				BB62AE2A23DF40CC00CE1D52 /* Old Project */,
 			);
 			path = Sheets;
 			sourceTree = "<group>";
@@ -96,7 +179,7 @@
 			);
 			name = Sheets;
 			productName = Sheets;
-			productReference = BBAC0EE923A28BDD009D50DB /* Sheets.app */;
+			productReference = BBAC0EE923A28BDD009D50DB /* timeTable.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -139,7 +222,7 @@
 			files = (
 				BBAC0EF923A28BDE009D50DB /* LaunchScreen.storyboard in Resources */,
 				BBAC0EF623A28BDE009D50DB /* Assets.xcassets in Resources */,
-				BBAC0EF423A28BDD009D50DB /* Main.storyboard in Resources */,
+				BBAC0EF423A28BDD009D50DB /* TimeTable.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB62AE3523DF5D7500CE1D52 /* TimeTableViewController.swift in Sources */,
 				BBB3937C23CA138000EEA15C /* LessonCell.swift in Sources */,
 				BB2541D223C0B5F600AFF889 /* MainViewController.swift in Sources */,
 				BBDE39A023AFDF630056C801 /* OriginalSheets.swift in Sources */,
@@ -163,12 +247,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BBAC0EF223A28BDD009D50DB /* Main.storyboard */ = {
+		BBAC0EF223A28BDD009D50DB /* TimeTable.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BBAC0EF323A28BDD009D50DB /* Base */,
 			);
-			name = Main.storyboard;
+			name = TimeTable.storyboard;
 			sourceTree = "<group>";
 		};
 		BBAC0EF723A28BDE009D50DB /* LaunchScreen.storyboard */ = {
@@ -302,15 +386,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C97NTYG8P8;
-				INFOPLIST_FILE = Sheets/Info.plist;
+				INFOPLIST_FILE = "Sheets/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ar-ko.Sheets";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "ar-ko.timeTable";
+				PRODUCT_NAME = timeTable;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -320,15 +404,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C97NTYG8P8;
-				INFOPLIST_FILE = Sheets/Info.plist;
+				INFOPLIST_FILE = "Sheets/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ar-ko.Sheets";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "ar-ko.timeTable";
+				PRODUCT_NAME = timeTable;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
