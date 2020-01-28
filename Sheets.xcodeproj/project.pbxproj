@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BB2541D223C0B5F600AFF889 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2541D123C0B5F600AFF889 /* MainViewController.swift */; };
+		BB613D9023E0A8C5000226D5 /* TimeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB613D8F23E0A8C5000226D5 /* TimeTableCell.swift */; };
+		BB613D9223E0AA95000226D5 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB613D9123E0AA95000226D5 /* Lesson.swift */; };
 		BB62AE3523DF5D7500CE1D52 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB62AE3423DF5D7500CE1D52 /* TimeTableViewController.swift */; };
 		BBAC0EED23A28BDD009D50DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC0EEC23A28BDD009D50DB /* AppDelegate.swift */; };
 		BBAC0EEF23A28BDD009D50DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAC0EEE23A28BDD009D50DB /* SceneDelegate.swift */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		BB2541D123C0B5F600AFF889 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		BB613D8F23E0A8C5000226D5 /* TimeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableCell.swift; sourceTree = "<group>"; };
+		BB613D9123E0AA95000226D5 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		BB62AE3423DF5D7500CE1D52 /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
 		BBAC0EE923A28BDD009D50DB /* timeTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timeTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBAC0EEC23A28BDD009D50DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				BBAC0EF223A28BDD009D50DB /* TimeTable.storyboard */,
+				BB613D8F23E0A8C5000226D5 /* TimeTableCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 		BB62AE3223DF43FB00CE1D52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BB613D9123E0AA95000226D5 /* Lesson.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -238,6 +244,8 @@
 				BB2541D223C0B5F600AFF889 /* MainViewController.swift in Sources */,
 				BBDE39A023AFDF630056C801 /* OriginalSheets.swift in Sources */,
 				BBAC0EED23A28BDD009D50DB /* AppDelegate.swift in Sources */,
+				BB613D9223E0AA95000226D5 /* Lesson.swift in Sources */,
+				BB613D9023E0A8C5000226D5 /* TimeTableCell.swift in Sources */,
 				BBDE39A223AFDFBA0056C801 /* Lesson.swift in Sources */,
 				BBDE399E23AF79A40056C801 /* ParsingData.swift in Sources */,
 				BBAC0EEF23A28BDD009D50DB /* SceneDelegate.swift in Sources */,
