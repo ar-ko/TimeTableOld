@@ -100,7 +100,7 @@ class MainViewController: UITableViewController {
             switch timeTable[currentDayIndex][indexPath.row].lessonMainType {
             case .laboratoryWork: cell.lessonType.text = "Лабораторная работа"               
             case .lecture: cell.lessonType.text = "Лекция"
-            case .practice: cell.lessonType.text = "Практическое занятие"
+            case .practice: cell.lessonType.text = "Практика"
             default: cell.lessonType.text = ""
             }
             
@@ -165,6 +165,9 @@ class MainViewController: UITableViewController {
         }
         
         let numberOfWeek = (days + dateCorrection) / 7
+        
+        print (calendar.component(.weekday, from: currentDate))
+        
         switch numberOfWeek.isMultiple(of: 2){
         case true:
             if calendar.component(.weekday, from: currentDate) == 1 {
